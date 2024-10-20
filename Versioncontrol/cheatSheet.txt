@@ -1,0 +1,49 @@
+git status to get the status form the git
+git_status = subprocess.check_output(['git', 'status']).decode('utf-8')
+print("Git status: ", git_status)
+git add:git commnads marks to add in the
+
+$ git restore --stage text.txt
+
+
+using the blame we get output in the way the commit are 2H0MitOtojFEIy6ZCY3ZShzKIlCDAwAC8emXfQV
+$ git blame input.txt
+55c7e7e1 (Sagar 2024-10-20 17:08:21 +0530 1) git status to get the status form the git
+55c7e7e1 (Sagar 2024-10-20 17:08:21 +0530 2) git_status = subprocess.check_output(['git', 'status']).decode('utf-8')
+55c7e7e1 (Sagar 2024-10-20 17:08:21 +0530 3) print("Git status: ", git_status)
+f129e8cd (Sagar 2024-10-20 17:13:11 +0530 4) git add:git commnads marks to add in the
+f129e8cd (Sagar 2024-10-20 17:13:11 +0530 5)
+f129e8cd (Sagar 2024-10-20 17:13:11 +0530 6) $ git restore --stage text.txt
+
+Here we get input in the form of the info in the detail form where is changes are
+
+Example
+Let's run through a typical flow of creating a new branch and adding some new content.
+
+Step 1: Clone the repository.
+
+Step 2: Create a new branch.
+
+git checkout -b test/forking-example 
+
+Step 4: Create a new file and commit it to the repository.
+
+touch text.txt
+git add . 
+git commit -m 'chore: testing' 
+
+Step 5 Push the branch to your remote repository.
+
+git push -u origin test/forking-example 
+
+Step 6: Go to Github and click the Compare & pull request button. If it's not available, click on the branch dropdown button and change it from main to the branch name of test/forking-example:
+
+Test/forking example
+After clicking the Compare & pull request button it will now redirect to the original repository in order to create the PR.
+
+Click on the Compare and pull request button. 
+Each repository will have its own guidelines for submitting PRs against them and usually provide a how-to contribute guide. As you can see, in order to get the changes from our forked repository, you need to compare it against the original. This gives a lot of control to the repository owners of the original and they get to decide what makes the cut to be merged in.
+
+In this lesson you covered the basics of forking a repository, adding some changes, and then creating a PR to get it back to the original repository.
+
+(Alternatively, git branch feature creates a new branch, but git checkout -b feature both creates and switches to it.)
