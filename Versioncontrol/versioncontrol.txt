@@ -1,0 +1,63 @@
+Identify the person who made the changes and what made
+them change their mind.
+The person who made the changes is the
+Version Control has a long history going back to the 1980s. In fact, version control systems were created before the Internet!
+
+One of the first significant Version Control Systems was the Concurrent Versions System (CVS). It was first developed in 1986 by Walter F. Tichy at Purdue University and released publicly in 1990.
+
+CVS stores information about every file in a folder structure, including the name of the file, its location in the folder structure, who last modified it, and when it was last modified. The CVS also stores information about folders, including their names and who created them.
+
+
+
+Module 2:
+cd:Change directory
+touch:new file's name
+mkdir:make a new directory
+
+Command
+
+Used for
+
+cd
+
+Change Directory
+
+ls
+
+List command used for showing the content of a directory.
+
+rm
+
+Remove command used for removing a file or a directory
+
+mv
+
+Used to move files or folders to another location
+
+touch
+
+Allows creating of a new empty file or to update a timestamp on a file
+
+cp
+
+Used to make a copy of a file or folder
+
+mkdir
+
+Make a new directory
+
+pwd
+
+Print work directory, shows the current location in the shell
+
+cat
+
+Allows reading or concatenation of a file
+
+less
+
+Displays the contents of a file one page at a time.
+
+grep
+
+Global regular expression, allows for searching contents of files or folders

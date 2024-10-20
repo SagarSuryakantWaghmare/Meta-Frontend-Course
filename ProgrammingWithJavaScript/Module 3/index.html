@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .job-container {
+            background-color: #f8f4fc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-initials {
+            background-color: navy;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-distance, .job-category {
+            margin-left: 10px;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .service-info h4 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .chat-button {
+            background-color: #ff7f50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .job-details {
+            margin-top: 10px;
+        }
+
+        .job-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .complete .status-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .status-icons {
+            display: flex;
+        }
+
+        .status-icon {
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        .status-icon i {
+            color: green;
+        }
+
+        .payment-info {
+            margin-top: 20px;
+        }
+
+        .payment-info p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="job-container">
+        <div class="job-header">
+            <div class="job-user-info">
+                <span class="user-initials">SS</span>
+                <span class="user-distance">within 1km</span>
+                <span class="job-category">Home</span>
+            </div>
+            <div class="service-info">
+                <h4>Swapnil Salunke Home Services</h4>
+                <button class="chat-button">Start a Chat</button>
+            </div>
+        </div>
+        <div class="job-details">
+            <p><strong>Address:</strong> Customer Address</p>
+            <p><strong>Job Type:</strong> Electrical</p>
+            <p><strong>Job description:</strong> The job has been successfully completed.</p>
+        </div>
+        <div class="job-status complete">
+            <span class="status-text">Completed</span>
+            <div class="status-icons">
+                <div class="status-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="status-icon"><i class="fas fa-money-bill-wave"></i></div>
+            </div>
+        </div>
+        <div class="payment-info">
+            <p><strong>Total Charges:</strong> Rs. 3500</p>
+            <p><strong>Advance Payment:</strong> Yes</p>
+        </div>
+    </div>
+
+</body>
+</html>

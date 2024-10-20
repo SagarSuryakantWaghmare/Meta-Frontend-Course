@@ -1,0 +1,12 @@
+{
+  "name": "writing-testing-just",
+  "version": "1.0.0",
+  "main": "addFive.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
