@@ -4,3 +4,15 @@ print("Git status: ", git_status)
 git add:git commnads marks to add in the
 
 $ git restore --stage text.txt
+
+
+using the blame we get output in the way the commit are 2H0MitOtojFEIy6ZCY3ZShzKIlCDAwAC8emXfQV
+$ git blame input.txt
+55c7e7e1 (Sagar 2024-10-20 17:08:21 +0530 1) git status to get the status form the git
+55c7e7e1 (Sagar 2024-10-20 17:08:21 +0530 2) git_status = subprocess.check_output(['git', 'status']).decode('utf-8')
+55c7e7e1 (Sagar 2024-10-20 17:08:21 +0530 3) print("Git status: ", git_status)
+f129e8cd (Sagar 2024-10-20 17:13:11 +0530 4) git add:git commnads marks to add in the
+f129e8cd (Sagar 2024-10-20 17:13:11 +0530 5)
+f129e8cd (Sagar 2024-10-20 17:13:11 +0530 6) $ git restore --stage text.txt
+
+Here we get input in the form of the info in the detail form where is changes are
