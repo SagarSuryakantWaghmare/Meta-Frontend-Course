@@ -1,3 +1,6 @@
 git status to get the status form the git
 git_status = subprocess.check_output(['git', 'status']).decode('utf-8')
 print("Git status: ", git_status)
+git add:git commnads marks to add in the
+
+$ git restore --stage text.txt
