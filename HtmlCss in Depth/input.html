@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            color: aqua;
+        }
+        h1 {
+            color: aqua;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            height: 30px;
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            font-size: 16px;
+            color: #333;
+        }
+        input[type="text"]:valid {
+            background-color: #228B22; /* ForestGreen */
+        }
+        input[type="password"]:valid {
+            background-color: #228B22;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #555;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" required minlength="2">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" required minlength="2">
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</body>
+</html>
