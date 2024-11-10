@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Basics</title>
+    <style>
+      .row {
+        display: flex;
+        align-items: stretch;
+      }
+      .row .label {
+        flex: 0 0 auto;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .row .container {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .row .dish{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pasta{
+        background-color: aqua;
+      }
+      
+      .pizza{
+        background-color: rgb(87, 155, 14);
+      }
+      
+      .burrite{
+        background-color: rgb(1, 93, 93);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="label">Preferred Dishes</div>
+      <div class="dish pasta" style="flex-basis: 35%">35%</div>
+      <div class="dish pizza" style="flex-basis: 50%">50%</div>
+      <div class="dish burrite" style="flex-basis: 15%">15%</div>
+    </div>
+  </body>
+</html>
