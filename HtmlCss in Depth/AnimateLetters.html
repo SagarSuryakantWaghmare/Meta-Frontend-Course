@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate Letters</title>
+    <style>
+        body{
+            background-color: #f0f0f0;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        /* Make all the letters in the give separted and add the margin and padding also to the box */
+        .first, .second, .third{
+            display: inline-block;
+            font-size: 2em;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #000;
+            margin: 20px 0;
+        }
+        .first{
+            animation: animate 1s infinite;
+        }
+        .second{
+            animation: animate 1s infinite 0.3s;
+        }
+        .third{
+            animation: animate 1s infinite 0.6s;
+        }
+        @keyframes animate{
+            0%{
+                transform: translateY(0);
+            }
+            50%{
+                transform: translateY(10px);
+            }
+            100%{
+                transform: translateY(0);
+            }
+        }
+        .first:hover{
+            transform: rotate(-180deg);
+            color: orange;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+            text-transform: uppercase;
+        }
+        .second:hover{
+            transform: scale(1.2);
+            text-transform: uppercase;
+            color: blue;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        
+        .third:hover{
+        text-transform: uppercase;
+        transform: rotate(-180deg);
+        color: green;
+        transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+    }
+    
+
+    </style>
+</head>
+
+<body>
+    <h1>Animate Letters</h1>
+    <p class="first">Never </p>
+    <p class="second">Give </p>
+    <p class="third">Up!</p>
+</body>
+</html>
