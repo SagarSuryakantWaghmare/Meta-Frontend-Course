@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.navbar {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbarLogo {
+    height: 50px;
+}
+
+.navbarLinks {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbarLink {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbarLink:hover {
+    color: #a89361;
+}
+
+.heroSection {
+    background: url('jewelry-background.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.heroContent {
+    max-width: 600px;
+    margin: auto;
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.heroSubtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.heroButton {
+    padding: 0.75rem 1.5rem;
+    background-color: #a89361;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.heroButton:hover {
+    background-color: #8c7a50;
+}
+
+.aboutSection, .collectionSection, .contactSection {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.aboutText {
+    max-width: 600px;
+    margin: 1rem auto;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.aboutImage {
+    width: 300px;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.collectionGrid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.collectionItem {
+    width: 250px;
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.collectionImage {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.collectionItemTitle {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.collectionItemDescription {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.contactButton {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #a89361;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contactButton:hover {
+    background-color: #8c7a50;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footerText {
+    font-size: 0.9rem;
+}
