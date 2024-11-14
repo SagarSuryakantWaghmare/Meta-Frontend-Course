@@ -6,6 +6,7 @@ import React from 'react'
 // import TernaryOperator from './components/TernaryOperator';
 import GuessTheNumber from './components/GuessTheNumber';
 import ExpressionsAsProps from './components/ExpressionsAsProps';
+import EmbeddingExpressions from './components/Embedding.js';
 function App() {
   let name = 'React';
   return (
@@ -18,7 +19,9 @@ function App() {
     <Sidebar/> */}
     {/* <GuessTheNumber/>
      */}
-     <ExpressionsAsProps/>
+     {/* <ExpressionsAsProps/>
+      */}
+      <EmbeddingExpressions/>
     </>
   )
 }
