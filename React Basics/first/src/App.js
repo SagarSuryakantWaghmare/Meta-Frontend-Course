@@ -5,6 +5,7 @@ import React from 'react'
 // import Sidebar from './components/Sidebar';
 // import TernaryOperator from './components/TernaryOperator';
 import GuessTheNumber from './components/GuessTheNumber';
+import ExpressionsAsProps from './components/ExpressionsAsProps';
 function App() {
   let name = 'React';
   return (
@@ -15,7 +16,9 @@ function App() {
     {/* <TernaryOperator/>
     <Main/>
     <Sidebar/> */}
-    <GuessTheNumber/>
+    {/* <GuessTheNumber/>
+     */}
+     <ExpressionsAsProps/>
     </>
   )
 }
