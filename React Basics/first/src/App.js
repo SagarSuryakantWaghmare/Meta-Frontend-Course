@@ -12,6 +12,7 @@ import ToggleMode from './components/ToggleMode'
 import Ultima from './components/Ultima'
 import Hooks from './Pages/Hooks';
 import Form from './Pages/Form';
+import Context from './Pages/Context';
 function App() {
   let name = 'React';
   return (
@@ -31,7 +32,9 @@ function App() {
       {/* <ToggleMode/> */}
       {/* <Ultima/> */}
       {/* <Hooks/> */}
-      <Form/>
+      {/* <Form/>
+       */}
+       <Context/>
     </>
   )
 }

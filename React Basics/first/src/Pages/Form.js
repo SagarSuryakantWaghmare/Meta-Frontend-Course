@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 
 function Form() {
   const [form, setForm] = useState({
@@ -6,6 +6,10 @@ function Form() {
     lastName: "Waghmare",
     email: "sagarwaghmare1384@gmail.com",
   });
+const inputEl=useRef(null);
+const onButtonClick=()=>{
+    inputEl.current.focus();
+}
 
   return (
     <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
@@ -39,6 +43,8 @@ function Form() {
       <p className="mt-4 text-gray-800">
         {form.firstName} {form.lastName} {form.email}
       </p>
+      <input ref={inputEl} type="text"/>
+      <button onClick={onButtonClick}>Focus on the input</button>
     </div>
   );
 }
