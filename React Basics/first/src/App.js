@@ -8,6 +8,7 @@ import React from 'react'
 // import ExpressionsAsProps from './components/ExpressionsAsProps';
 // import EmbeddingExpressions from './components/Embedding.js';
 import EventHandler from './components/EventHandler'
+import ToggleMode from './components/ToggleMode'
 function App() {
   let name = 'React';
   return (
@@ -23,7 +24,8 @@ function App() {
      {/* <ExpressionsAsProps/>
       */}
       {/* <EmbeddingExpressions/> */}
-      <EventHandler/>
+      {/* <EventHandler/> */}
+      <ToggleMode/>
     </>
   )
 }
