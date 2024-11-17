@@ -11,6 +11,7 @@ import EventHandler from './components/EventHandler'
 import ToggleMode from './components/ToggleMode'
 import Ultima from './components/Ultima'
 import Hooks from './Pages/Hooks';
+import Form from './Pages/Form';
 function App() {
   let name = 'React';
   return (
@@ -29,7 +30,8 @@ function App() {
       {/* <EventHandler/> */}
       {/* <ToggleMode/> */}
       {/* <Ultima/> */}
-      <Hooks/>
+      {/* <Hooks/> */}
+      <Form/>
     </>
   )
 }
