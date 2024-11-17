@@ -10,6 +10,7 @@ import React from 'react'
 import EventHandler from './components/EventHandler'
 import ToggleMode from './components/ToggleMode'
 import Ultima from './components/Ultima'
+import Hooks from './Pages/Hooks';
 function App() {
   let name = 'React';
   return (
@@ -27,7 +28,8 @@ function App() {
       {/* <EmbeddingExpressions/> */}
       {/* <EventHandler/> */}
       {/* <ToggleMode/> */}
-      <Ultima/>
+      {/* <Ultima/> */}
+      <Hooks/>
     </>
   )
 }
