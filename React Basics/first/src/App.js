@@ -4,9 +4,10 @@ import React from 'react'
 // import Main from './components/Main';
 // import Sidebar from './components/Sidebar';
 // import TernaryOperator from './components/TernaryOperator';
-import GuessTheNumber from './components/GuessTheNumber';
-import ExpressionsAsProps from './components/ExpressionsAsProps';
-import EmbeddingExpressions from './components/Embedding.js';
+// import GuessTheNumber from './components/GuessTheNumber';
+// import ExpressionsAsProps from './components/ExpressionsAsProps';
+// import EmbeddingExpressions from './components/Embedding.js';
+import EventHandler from './components/EventHandler'
 function App() {
   let name = 'React';
   return (
@@ -21,7 +22,8 @@ function App() {
      */}
      {/* <ExpressionsAsProps/>
       */}
-      <EmbeddingExpressions/>
+      {/* <EmbeddingExpressions/> */}
+      <EventHandler/>
     </>
   )
 }
