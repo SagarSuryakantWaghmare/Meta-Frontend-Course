@@ -5,6 +5,7 @@ import About from './pages/About'
 import Image from './pages/Image'
 import Media from './pages/Media'
 import Song from './pages/Song'
+import Calculator from './pages/Calculator'
 function App() {
   return (
    <>
@@ -14,6 +15,7 @@ function App() {
    <Route path='/image' element={<Image/>} />
    <Route path='/media' element={<Media/>} />
    <Route path='/song' element={<Song/>} />
+   <Route path='/calculator' element={<Calculator/>} />
    
    </Routes>
    </>
