@@ -7,19 +7,25 @@ import React from 'react'
 // import Form from './components/Form'
 // import form from './components/FeedBackForm'
 // import FeedBackForm from './components/FeedBackForm'
-import RegistationForm from './components/RegistationForm'
+// import RegistationForm from './components/RegistationForm'
+import Blog from './components/Blog'
+import { UserProvider } from './components/UserContext'
 function App() {
   return (
     <>
-      <h1>App</h1>
-      {/* <ListRendering/> */}
-      {/* <FilterComponent/> */}
-      {/* <Todo/> */}
-      {/* <Deserts/> */}
-      {/* <Controlled/> */}
-      {/* <Form/> */}
-      {/* <FeedBackForm/> */}
-      <RegistationForm/>
+      <UserProvider>
+        <h1>App</h1>
+        {/* <ListRendering/> */}
+        {/* <FilterComponent/> */}
+        {/* <Todo/> */}
+        {/* <Deserts/> */}
+        {/* <Controlled/> */}
+        {/* <Form/> */}
+        {/* <FeedBackForm/> */}
+        {/* <RegistationForm/>
+       */}
+        <Blog />
+      </UserProvider>
     </>
   )
 }
