@@ -5,8 +5,9 @@ import React from 'react'
 // import Deserts from './components/Deserts'
 // import Controlled from './components/Controlled'
 // import Form from './components/Form'
-import form from './components/FeedBackForm'
-import FeedBackForm from './components/FeedBackForm'
+// import form from './components/FeedBackForm'
+// import FeedBackForm from './components/FeedBackForm'
+import RegistationForm from './components/RegistationForm'
 function App() {
   return (
     <>
@@ -17,7 +18,8 @@ function App() {
       {/* <Deserts/> */}
       {/* <Controlled/> */}
       {/* <Form/> */}
-      <FeedBackForm/>
+      {/* <FeedBackForm/> */}
+      <RegistationForm/>
     </>
   )
 }
