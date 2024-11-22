@@ -7,6 +7,7 @@ import { UserProvider } from './components/UserContext';
 import ListRendering from './components/ListRendering';
 import Weather from './pages/Weather';
 import Jokes from './pages/Jokes';
+import Todo from './pages/Todo';
 function App() {
   return (
     <>
@@ -19,7 +20,9 @@ function App() {
     {/* <ListRendering/>
      */}
      {/* <Weather/> */}
-     <Jokes/>
+     {/* <Jokes/>
+      */}
+      <Todo/>
     </>
   );
 }
