@@ -5,7 +5,8 @@ import { ThemeProvider } from './components/ThemeContext';
 import Para from './components/Para';
 import { UserProvider } from './components/UserContext';
 import ListRendering from './components/ListRendering';
-
+import Weather from './pages/Weather';
+import Jokes from './pages/Jokes';
 function App() {
   return (
     <>
@@ -15,7 +16,10 @@ function App() {
     {/* <UserProvider>
       <Para/>
     </UserProvider> */}
-    <ListRendering/>
+    {/* <ListRendering/>
+     */}
+     {/* <Weather/> */}
+     <Jokes/>
     </>
   );
 }
