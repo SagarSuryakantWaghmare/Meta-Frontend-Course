@@ -8,6 +8,7 @@ import ListRendering from './components/ListRendering';
 import Weather from './pages/Weather';
 import Jokes from './pages/Jokes';
 import Todo from './pages/Todo';
+import Quotes from './pages/Quotes';
 function App() {
   return (
     <>
@@ -22,7 +23,8 @@ function App() {
      {/* <Weather/> */}
      {/* <Jokes/>
       */}
-      <Todo/>
+      {/* <Todo/> */}
+      <Quotes/>
     </>
   );
 }
