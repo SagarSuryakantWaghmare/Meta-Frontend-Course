@@ -7,6 +7,7 @@ import React from 'react'
 import Effects from './pages/Effects'
 import SideEffects from './pages/SideEffects'
 import FetchData from './pages/FetchData'
+import RandomUser from './pages/RandomUser';
 function App() {
   return (
     <>
@@ -17,7 +18,8 @@ function App() {
     {/* <Aim/> */}
      {/* <Effects/> */}
      {/* <SideEffects/> */}
-     <FetchData/>
+     {/* <FetchData/> */}
+     <RandomUser/>
     </>
   )
 }
