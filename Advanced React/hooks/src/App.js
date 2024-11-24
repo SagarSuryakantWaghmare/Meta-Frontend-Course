@@ -6,6 +6,7 @@ import React from 'react'
 // import Aim from './components/Aim'
 import Effects from './pages/Effects'
 import SideEffects from './pages/SideEffects'
+import FetchData from './pages/FetchData'
 function App() {
   return (
     <>
@@ -15,7 +16,8 @@ function App() {
     {/* <Card/> */}
     {/* <Aim/> */}
      {/* <Effects/> */}
-     <SideEffects/>
+     {/* <SideEffects/> */}
+     <FetchData/>
     </>
   )
 }
