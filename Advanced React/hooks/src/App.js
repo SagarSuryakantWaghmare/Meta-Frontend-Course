@@ -8,7 +8,12 @@ import React from 'react'
 // import SideEffects from './pages/SideEffects'
 // import FetchData from './pages/FetchData'
 // import RandomUser from './pages/RandomUser';
-import GithubProfile from './pages/GithubProfile'
+// import GithubProfile from './pages/GithubProfile'
+// import UserReducerState from './pages/UserReducerState'
+// import DisReducer from './pages/DisReducer';
+// import FocusInput from './pages/FocusInput'
+// import CustomHook from './pages/CustomHook'
+import OwnHook from './pages/OwnHook';
 function App() {
   return (
     <>
@@ -21,7 +26,12 @@ function App() {
      {/* <SideEffects/> */}
      {/* <FetchData/> */}
      {/* <RandomUser/> */}
-     <GithubProfile/>
+     {/* <GithubProfile/> */}
+     {/* <UserReducerState/> */}
+     {/* <DisReducer/> */}
+     {/* <FocusInput/> */}
+     {/* <CustomHook/> */}
+     <OwnHook/>
     </>
   )
 }
