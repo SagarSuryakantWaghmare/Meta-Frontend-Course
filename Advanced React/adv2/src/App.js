@@ -9,6 +9,7 @@ import Weather from './pages/Weather';
 import Jokes from './pages/Jokes';
 import Todo from './pages/Todo';
 import Quotes from './pages/Quotes';
+import Spread from './pages/Spread';
 function App() {
   return (
     <>
@@ -24,7 +25,8 @@ function App() {
      {/* <Jokes/>
       */}
       {/* <Todo/> */}
-      <Quotes/>
+      {/* <Quotes/> */}
+      <Spread/>
     </>
   );
 }
