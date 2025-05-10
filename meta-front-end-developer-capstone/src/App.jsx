@@ -4,6 +4,7 @@ import About from './pages/About';
 import Menu from './pages/Menu';
 import Reservation from './pages/Reservation';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 const App = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/menu" element={<Menu />} />
         <Route path="/reservation" element={<Reservation />} />
       </Routes>
+      <Footer/>
     </>
   );
 };
