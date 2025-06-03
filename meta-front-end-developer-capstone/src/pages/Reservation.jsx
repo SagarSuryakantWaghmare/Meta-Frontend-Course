@@ -1,11 +1,14 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
+import { FaCalendarAlt, FaClock, FaUsers, FaGift, FaUtensils, FaCheck, FaTimes, FaStar } from 'react-icons/fa';
 
 const Reservation = () => {
+  // Auto-scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Form state
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,28 +17,150 @@ const Reservation = () => {
     time: '',
     guests: '2',
     occasion: '',
+    seating: 'indoor',
     specialRequests: ''
   });
 
+  // UI state
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
+  const [formErrors, setFormErrors] = useState({});
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [availableTimes, setAvailableTimes] = useState([]);
+  const [dateSelected, setDateSelected] = useState(false);
+  const [step, setStep] = useState(1);
+  const calendarRef = useRef(null);
+  
+  // Occasions options
+  const occasions = ['Birthday', 'Anniversary', 'Date', 'Business', 'Special Occasion', 'Other'];
+  
+  // Handle outside click for calendar popup
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+        setShowCalendar(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+  
+  // Generate available times based on selected date
+  useEffect(() => {
+    if (formData.date) {
+      setDateSelected(true);
+      
+      // Generate fake available time slots based on date
+      const date = new Date(formData.date);
+      const day = date.getDay(); // 0 = Sunday, 6 = Saturday
+      
+      // More slots on weekends, fewer on weekdays
+      const slots = [];
+      const startHour = day === 0 || day === 6 ? 10 : 11; // Earlier on weekends
+      const endHour = day === 5 || day === 6 ? 22 : 21; // Later on Friday/Saturday
+      
+      for (let hour = startHour; hour <= endHour; hour++) {
+        // Every half hour
+        for (let minutes of ['00', '30']) {
+          // Randomly make some slots "unavailable" for realism
+          const available = Math.random() > 0.3;
+          if (available) {
+            slots.push({
+              time: `${hour}:${minutes}`,
+              display: `${hour > 12 ? hour - 12 : hour}:${minutes} ${hour >= 12 ? 'PM' : 'AM'}`,
+              popularity: Math.random() > 0.7 ? 'popular' : ''
+            });
+          }
+        }
+      }
+      
+      setAvailableTimes(slots);
+      
+      // Reset selected time if changing date
+      setSelectedTimeSlot(null);
+      setFormData(prev => ({ ...prev, time: '' }));
+    } else {
+      setDateSelected(false);
+      setAvailableTimes([]);
+    }
+  }, [formData.date]);
+  
+  // Form validation
+  const validateForm = () => {
+    const errors = {};
+    
+    if (!formData.name.trim()) errors.name = "Name is required";
+    if (!formData.email.trim()) errors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = "Email is invalid";
+    if (!formData.phone.trim()) errors.phone = "Phone number is required";
+    if (!formData.date) errors.date = "Date is required";
+    if (!formData.time) errors.time = "Time is required";
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+  
+  // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    
+    // Clear error when field is updated
+    if (formErrors[name]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
-
+  
+  // Handle time slot selection
+  const handleTimeSelect = (timeObj) => {
+    setSelectedTimeSlot(timeObj.time);
+    setFormData(prev => ({
+      ...prev,
+      time: timeObj.time
+    }));
+  };
+  
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      // Scroll to first error
+      const firstError = document.querySelector('.error-message');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Simulate form submission with a delay
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
+      
+      // Save reservation to localStorage for demo purposes
+      try {
+        const existingReservations = JSON.parse(localStorage.getItem('littleLemonReservations') || '[]');
+        existingReservations.push({
+          ...formData,
+          id: Date.now(),
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem('littleLemonReservations', JSON.stringify(existingReservations));
+      } catch (error) {
+        console.error('Error saving reservation:', error);
+      }
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -44,10 +169,14 @@ const Reservation = () => {
         time: '',
         guests: '2',
         occasion: '',
+        seating: 'indoor',
         specialRequests: ''
       });
+      setSelectedTimeSlot(null);
+      setDateSelected(false);
+      setStep(1);
       
-      // Hide success message after 5 seconds
+      // Auto-hide success message after delay
       setTimeout(() => setSubmitSuccess(false), 5000);
     }, 1500);
   };
@@ -68,10 +197,60 @@ const Reservation = () => {
     }
     return times;
   };
-
+  // Handle next step
+  const handleNextStep = () => {
+    let canProceed = true;
+    const errors = {};
+    
+    if (step === 1) {
+      // Validate date and time selection
+      if (!formData.date) {
+        errors.date = "Please select a date";
+        canProceed = false;
+      }
+      if (!formData.time) {
+        errors.time = "Please select a time";
+        canProceed = false;
+      }
+      if (!formData.guests) {
+        errors.guests = "Please select number of guests";
+        canProceed = false;
+      }
+    } else if (step === 2) {
+      // Validate personal information
+      if (!formData.name.trim()) {
+        errors.name = "Name is required";
+        canProceed = false;
+      }
+      if (!formData.email.trim()) {
+        errors.email = "Email is required";
+        canProceed = false;
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        errors.email = "Email is invalid";
+        canProceed = false;
+      }
+      if (!formData.phone.trim()) {
+        errors.phone = "Phone number is required";
+        canProceed = false;
+      }
+    }
+    
+    setFormErrors(errors);
+    
+    if (canProceed) {
+      setStep(step + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  
+  // Handle previous step
+  const handlePrevStep = () => {
+    setStep(step - 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  
   return (
     <div className="font-sans text-[#333] bg-[#FFF8E7] overflow-x-hidden">
-
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-[#F4CE14] to-[#EE9972] py-20 px-6 md:px-24">
         <div className="max-w-7xl mx-auto text-center">
@@ -110,14 +289,33 @@ const Reservation = () => {
                 animate={{ opacity: 1 }}
               >
                 <div className="w-20 h-20 bg-[#495E57] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#F4CE14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <FaCheck className="h-12 w-12 text-[#F4CE14]" />
                 </div>
                 <h2 className="text-3xl font-bold text-[#495E57] mb-4">Reservation Confirmed!</h2>
                 <p className="text-lg text-[#666] mb-6">
                   Thank you for booking with us. We look forward to serving you.
                 </p>
+                <div className="bg-white rounded-lg p-6 mb-8 border border-gray-200">
+                  <h3 className="font-bold text-xl mb-4 text-[#495E57]">Reservation Details</h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-left">
+                    <div>
+                      <p className="text-gray-500">Date</p>
+                      <p className="font-medium">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Time</p>
+                      <p className="font-medium">7:30 PM</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Party Size</p>
+                      <p className="font-medium">2 people</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Confirmation #</p>
+                      <p className="font-medium">LL-{Math.floor(100000 + Math.random() * 900000)}</p>
+                    </div>
+                  </div>
+                </div>
                 <button
                   onClick={() => setSubmitSuccess(false)}
                   className="bg-[#495E57] text-white px-8 py-3 rounded-lg hover:bg-[#3a4841] transition duration-300"
@@ -127,23 +325,215 @@ const Reservation = () => {
               </motion.div>
             ) : (
               <>
-                <h2 className="text-3xl font-bold text-[#495E57] mb-8 text-center">Book Your Table</h2>
-                <form onSubmit={handleSubmit}>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[#495E57] font-medium mb-2" htmlFor="name">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-[#ddd] focus:outline-none focus:ring-2 focus:ring-[#F4CE14]"
-                      />
+                <h2 className="text-3xl font-bold text-[#495E57] mb-4 text-center">Book Your Table</h2>
+                
+                {/* Progress indicator */}
+                <div className="flex justify-center mb-8">
+                  <div className="flex items-center w-full max-w-xs">
+                    <div 
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-[#495E57] text-white' : 'bg-gray-200 text-gray-500'}`}
+                    >
+                      1
                     </div>
+                    <div className={`flex-1 h-1 ${step >= 2 ? 'bg-[#495E57]' : 'bg-gray-200'}`}></div>
+                    <div 
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-[#495E57] text-white' : 'bg-gray-200 text-gray-500'}`}
+                    >
+                      2
+                    </div>
+                    <div className={`flex-1 h-1 ${step >= 3 ? 'bg-[#495E57]' : 'bg-gray-200'}`}></div>
+                    <div 
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 3 ? 'bg-[#495E57] text-white' : 'bg-gray-200 text-gray-500'}`}
+                    >
+                      3
+                    </div>
+                  </div>
+                </div>
+                
+                <AnimatePresence mode="wait">
+                  {step === 1 && (
+                    <motion.div
+                      key="step1"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <h3 className="text-xl font-semibold text-[#495E57] mb-6">Select Date & Time</h3>
+                      
+                      {/* Date Selection */}
+                      <div className="mb-6">
+                        <label className="flex items-center text-[#495E57] font-medium mb-2" htmlFor="date">
+                          <FaCalendarAlt className="mr-2" />
+                          Select a Date *
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            value={formData.date}
+                            onChange={handleChange}
+                            min={new Date().toISOString().split('T')[0]}
+                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.date ? 'border-red-500' : 'border-[#ddd]'} focus:outline-none focus:ring-2 focus:ring-[#F4CE14]`}
+                          />
+                          {formErrors.date && (
+                            <p className="text-red-500 text-sm mt-1 error-message">{formErrors.date}</p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* Time Selection */}
+                      {dateSelected && (
+                        <motion.div 
+                          className="mb-6"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <label className="flex items-center text-[#495E57] font-medium mb-2">
+                            <FaClock className="mr-2" />
+                            Select a Time *
+                          </label>
+                          {formErrors.time && (
+                            <p className="text-red-500 text-sm mb-2 error-message">{formErrors.time}</p>
+                          )}
+                          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                            {availableTimes.map((timeObj, index) => (
+                              <motion.button
+                                key={index}
+                                type="button"
+                                className={`relative px-3 py-2 text-center rounded-lg border transition-all ${
+                                  selectedTimeSlot === timeObj.time
+                                    ? 'bg-[#495E57] text-white border-[#495E57]'
+                                    : 'bg-white hover:bg-[#f0f0f0] border-gray-200'
+                                }`}
+                                onClick={() => handleTimeSelect(timeObj)}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                {timeObj.display}
+                                {timeObj.popularity === 'popular' && (
+                                  <span className="absolute -top-2 -right-2 bg-[#F4CE14] text-[#495E57] text-xs px-1 py-0.5 rounded-full">
+                                    <FaStar className="inline-block mr-0.5" size={8} />
+                                    Popular
+                                  </span>
+                                )}
+                              </motion.button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                      
+                      {/* Party Size */}
+                      <div className="mb-6">
+                        <label className="flex items-center text-[#495E57] font-medium mb-2" htmlFor="guests">
+                          <FaUsers className="mr-2" />
+                          Number of Guests *
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="guests"
+                            name="guests"
+                            value={formData.guests}
+                            onChange={handleChange}
+                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.guests ? 'border-red-500' : 'border-[#ddd]'} focus:outline-none focus:ring-2 focus:ring-[#F4CE14] appearance-none`}
+                          >
+                            {[...Array(10)].map((_, i) => (
+                              <option key={i} value={i + 1}>
+                                {i + 1} {i === 0 ? 'Guest' : 'Guests'}
+                              </option>
+                            ))}
+                            <option value="11">11+ (Large Party)</option>
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                          </div>
+                          {formErrors.guests && (
+                            <p className="text-red-500 text-sm mt-1 error-message">{formErrors.guests}</p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* Seating Preference */}
+                      <div className="mb-8">
+                        <p className="flex items-center text-[#495E57] font-medium mb-3">
+                          <FaUtensils className="mr-2" />
+                          Seating Preference
+                        </p>
+                        <div className="grid grid-cols-2 gap-3">
+                          <button
+                            type="button"
+                            className={`px-4 py-3 rounded-lg border transition-all ${
+                              formData.seating === 'indoor'
+                                ? 'bg-[#495E57] text-white border-[#495E57]'
+                                : 'bg-white hover:bg-[#f0f0f0] border-gray-200'
+                            }`}
+                            onClick={() => setFormData({ ...formData, seating: 'indoor' })}
+                          >
+                            Indoor Seating
+                          </button>
+                          <button
+                            type="button"
+                            className={`px-4 py-3 rounded-lg border transition-all ${
+                              formData.seating === 'outdoor'
+                                ? 'bg-[#495E57] text-white border-[#495E57]'
+                                : 'bg-white hover:bg-[#f0f0f0] border-gray-200'
+                            }`}
+                            onClick={() => setFormData({ ...formData, seating: 'outdoor' })}
+                          >
+                            Outdoor Seating
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-8 flex justify-end">
+                        <motion.button
+                          type="button"
+                          className="bg-[#495E57] text-white px-8 py-3 rounded-lg hover:bg-[#3a4841] transition duration-300 flex items-center"
+                          onClick={handleNextStep}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          disabled={!formData.date || !formData.time}
+                        >
+                          Continue
+                          <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </motion.button>
+                      </div>
+                    </motion.div>
+                  )}
+                  
+                  {step === 2 && (
+                    <motion.div
+                      key="step2"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <h3 className="text-xl font-semibold text-[#495E57] mb-6">Your Information</h3>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="block text-[#495E57] font-medium mb-2" htmlFor="name">
+                            Full Name *
+                          </label>
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.name ? 'border-red-500' : 'border-[#ddd]'} focus:outline-none focus:ring-2 focus:ring-[#F4CE14]`}
+                          />
+                          {formErrors.name && (
+                            <p className="text-red-500 text-sm mt-1 error-message">{formErrors.name}</p>
+                          )}
+                        </div>
 
                     <div>
                       <label className="block text-[#495E57] font-medium mb-2" htmlFor="email">
