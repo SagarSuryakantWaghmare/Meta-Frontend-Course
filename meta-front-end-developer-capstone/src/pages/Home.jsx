@@ -39,15 +39,6 @@ const Home = () => {
   const addToCart = (itemName) => {
     // Get existing cart or create new one
     const cart = JSON.parse(localStorage.getItem('littleLemonCart') || '[]');
-    
-    // Add new item
-    cart.push({
-      id: Date.now(),
-      name: itemName,
-      price: itemName === 'Greek Salad' ? 12.99 : 
-             itemName === 'Bruschetta' ? 7.99 : 5.99
-    });
-    
     // Save back to localStorage
     localStorage.setItem('littleLemonCart', JSON.stringify(cart));
     
@@ -194,24 +185,21 @@ const Home = () => {
             </motion.button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">            {[
-              {
+          <div className="grid md:grid-cols-3 gap-10">            {[              {
                 name: "Butter Paneer",
-                price: "$14.99",
+                price: "₹1,244",
                 description: "Our signature dish of soft paneer cubes in a rich, creamy tomato sauce with aromatic spices and finished with a touch of butter and fresh cream.",
                 image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3",
                 tags: ["Vegetarian", "Specialty", "Creamy"]
-              },
-              {
+              },              {
                 name: "Dal Makhani",
-                price: "$10.99",
+                price: "₹912",
                 description: "Black lentils and kidney beans slow-cooked overnight with ginger, garlic, and tomatoes, finished with cream and butter for a rich texture.",
                 image: "https://images.unsplash.com/photo-1612886623532-02868723d45f?ixlib=rb-4.0.3",
                 tags: ["Vegetarian", "Classic", "Popular"]
-              },
-              {
+              },              {
                 name: "Gulab Jamun",
-                price: "$6.99",
+                price: "₹580",
                 description: "Soft milk solids dumplings, deep-fried and soaked in rose and cardamom flavored sugar syrup. Served warm with a scoop of vanilla ice cream.",
                 image: "https://images.unsplash.com/photo-1627825087080-12c7b4a0e27a?ixlib=rb-4.0.3",
                 tags: ["Sweet", "Dessert", "Traditional"]
