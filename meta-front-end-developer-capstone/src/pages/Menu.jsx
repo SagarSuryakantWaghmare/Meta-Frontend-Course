@@ -56,22 +56,21 @@ const Menu = () => {
         description: "Traditional Indian ice cream flavored with saffron, cardamom and topped with crushed pistachios.",
         popular: true
       }
-    ],    drinks: [
-      {
+    ],    drinks: [      {
         name: "Masala Chai",
-        price: "$4/cup",
+        price: "₹332/cup",
         description: "Traditional Indian spiced tea with ginger, cardamom, cinnamon and cloves, served with milk.",
         popular: true
       },
       {
         name: "Mango Lassi",
-        price: "$5.50",
+        price: "₹457",
         description: "Refreshing yogurt drink blended with ripe mangoes, cardamom, and a touch of honey.",
         popular: true
       },
       {
         name: "Rose Sherbet",
-        price: "$4.50",
+        price: "₹374",
         description: "Refreshing drink made with rose syrup, lemon juice, and garnished with basil seeds.",
         popular: false
       }
@@ -195,7 +194,7 @@ const Menu = () => {
               <div className="p-8">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-2xl font-bold text-[#495E57]">Royal Thali</h3>
-                  <span className="text-lg font-bold text-[#EE9972]">$59.99</span>
+                  <span className="text-lg font-bold text-[#EE9972]">₹4,979</span>
                 </div>
                 <p className="text-[#666] mb-6">
                   Experience a complete royal Indian feast with our family thali including two curries, dal, rice, assorted breads, raita, papad, pickles and dessert. Serves 4 people.
@@ -213,7 +212,7 @@ const Menu = () => {
               <div className="p-8">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-2xl font-bold text-[#495E57]">Couple's Special Dinner</h3>
-                  <span className="text-lg font-bold text-[#EE9972]">$69.00</span>
+                  <span className="text-lg font-bold text-[#EE9972]">₹5,727</span>
                 </div>
                 <p className="text-[#666] mb-6">
                   Perfect for couples: shared appetizer platter of paneer tikka and samosas, choice of two main curries, naan bread, rice, and gulab jamun dessert with two mango lassis.
