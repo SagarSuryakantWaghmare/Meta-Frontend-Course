@@ -26,7 +26,7 @@ const About = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            Little Lemon is more than just a restaurant - it's a celebration of family, tradition, and Mediterranean flavors.
+            Spice Delight is more than just a restaurant - it's a celebration of family, tradition, and authentic Indian flavors.
           </motion.p>
         </div>
       </section>
@@ -42,17 +42,16 @@ const About = () => {
             <h2 className="text-4xl font-bold text-[#495E57] mb-6">
               Our Humble Beginnings
             </h2>
-            <p className="text-lg text-[#666] mb-6">
-              Founded in 2010 by brothers Mario and Adrian, Little Lemon started as a small family-owned bistro in the heart of Chicago. Their vision was simple: to bring authentic Mediterranean flavors to their community.
+            <p className="text-lg text-[#666] mb-6">              Founded in 2010 by brothers Rajesh and Sunil Sharma, Spice Delight started as a small family-owned restaurant in the heart of Mumbai. Their vision was simple: to bring authentic Indian flavors from different regions to their community.
             </p>
             <p className="text-lg text-[#666] mb-6">
-              Growing up in a family that cherished food traditions, the brothers learned recipes passed down through generations. Today, we honor those traditions while adding our own creative twist.
+              Growing up in a family that cherished food traditions, the brothers learned recipes passed down through generations from their grandmother. Today, we honor those traditions while adding our own creative twist.
             </p>
             <div className="bg-[#FFF8E7] p-6 rounded-xl border-l-4 border-[#F4CE14]">
               <p className="italic text-[#495E57] font-medium">
-                "Food is our love language. Every dish tells a story of our heritage and passion for bringing people together."
+                "Food is our way of sharing culture. Every dish tells a story of our heritage and passion for bringing people together through the magic of Indian spices."
               </p>
-              <p className="mt-2 font-semibold text-[#EE9972]">— Mario & Adrian</p>
+              <p className="mt-2 font-semibold text-[#EE9972]">— Rajesh & Sunil Sharma</p>
             </div>
           </motion.div>
 

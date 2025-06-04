@@ -98,26 +98,25 @@ const Home = () => {
               <span className="text-xs font-medium text-white">Featured Restaurant</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-[#495E57] leading-tight mb-6">
-              Little Lemon
+            <h1 className="text-5xl md:text-6xl font-bold text-[#495E57] leading-tight mb-6">              Spice Delight
             </h1>
             <h2 className="text-3xl md:text-4xl font-semibold text-[#333333] mb-4">
-              Chicago
+              Mumbai
             </h2>
             
             <div className="flex flex-wrap gap-4 my-5">
               <div className="flex items-center">
                 <FaRegClock className="text-[#495E57] mr-2" />
-                <span>Open 11am - 10pm</span>
+                <span>Open 11am - 11pm</span>
               </div>
               <div className="flex items-center">
                 <FaLeaf className="text-[#495E57] mr-2" />
-                <span>Fresh Ingredients</span>
+                <span>Authentic Spices</span>
               </div>
             </div>
             
             <p className="mt-4 text-xl text-[#333333] mb-8 max-w-lg">
-              We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
+              We are a family owned Indian restaurant, focused on authentic recipes from various regions of India served with a contemporary presentation.
             </p>
             
             <div className="flex flex-wrap gap-4">
@@ -195,28 +194,27 @@ const Home = () => {
             </motion.button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
+          <div className="grid md:grid-cols-3 gap-10">            {[
               {
-                name: "Greek Salad",
-                price: "$12.99",
-                description: "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-                image: "https://images.unsplash.com/photo-1551248429-40975aa4de74?ixlib=rb-4.0.3",
-                tags: ["Vegetarian", "Healthy", "Fresh"]
+                name: "Butter Paneer",
+                price: "$14.99",
+                description: "Our signature dish of soft paneer cubes in a rich, creamy tomato sauce with aromatic spices and finished with a touch of butter and fresh cream.",
+                image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3",
+                tags: ["Vegetarian", "Specialty", "Creamy"]
               },
               {
-                name: "Bruschetta",
-                price: "$7.99",
-                description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
-                image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69b?ixlib=rb-4.0.3",
-                tags: ["Appetizer", "Italian", "Popular"]
+                name: "Dal Makhani",
+                price: "$10.99",
+                description: "Black lentils and kidney beans slow-cooked overnight with ginger, garlic, and tomatoes, finished with cream and butter for a rich texture.",
+                image: "https://images.unsplash.com/photo-1612886623532-02868723d45f?ixlib=rb-4.0.3",
+                tags: ["Vegetarian", "Classic", "Popular"]
               },
               {
-                name: "Lemon Dessert",
-                price: "$5.99",
-                description: "This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
-                image: "https://images.unsplash.com/photo-1582716401301-b2407dc7563d?ixlib=rb-4.0.3",
-                tags: ["Sweet", "Dessert", "Homemade"]
+                name: "Gulab Jamun",
+                price: "$6.99",
+                description: "Soft milk solids dumplings, deep-fried and soaked in rose and cardamom flavored sugar syrup. Served warm with a scoop of vanilla ice cream.",
+                image: "https://images.unsplash.com/photo-1627825087080-12c7b4a0e27a?ixlib=rb-4.0.3",
+                tags: ["Sweet", "Dessert", "Traditional"]
               }
             ].map((item, i) => (
               <motion.div
@@ -290,25 +288,24 @@ const Home = () => {
           >
             Testimonials
           </motion.h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
+          <div className="grid md:grid-cols-4 gap-8">            {[
               {
-                name: "John Doe",
+                name: "Raj Patel",
                 rating: 5,
-                comment: "The best Mediterranean food I've had outside of Greece! The flavors are incredible."
+                comment: "The best Indian food I've had outside of India! The spices and flavors are perfectly balanced."
               },
               {
-                name: "Jane Smith",
+                name: "Priya Sharma",
                 rating: 4,
-                comment: "Wonderful atmosphere and service. The lemon dessert is to die for!"
+                comment: "Wonderful atmosphere and service. The Gulab Jamun is absolutely divine!"
               },
               {
-                name: "Michael Johnson",
+                name: "Vikram Malhotra",
                 rating: 5,
-                comment: "Authentic flavors and generous portions. I'll definitely be back."
+                comment: "Authentic flavors and generous portions. Their Butter Paneer is outstanding!"
               },
               {
-                name: "Sarah Williams",
+                name: "Ananya Desai",
                 rating: 5,
                 comment: "Every dish we tried was exceptional. The staff made us feel like family."
               }
@@ -354,8 +351,7 @@ const Home = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-          >
-            Ready to experience authentic Mediterranean flavors?
+          >            Ready to experience authentic Indian flavors?
           </motion.h2>
           <motion.p
             className="text-xl text-white mb-12"
@@ -363,7 +359,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Book your table today and enjoy our seasonal specials
+            Book your table today and enjoy our regional specialties
           </motion.p>
           <motion.button
             className="bg-[#F4CE14] text-[#495E57] px-10 py-5 rounded-lg hover:bg-[#e6c213] transition duration-300 text-xl font-bold shadow-lg hover:shadow-xl"

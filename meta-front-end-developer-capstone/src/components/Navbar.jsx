@@ -60,13 +60,12 @@ const Navbar = () => {
     <nav className="bg-[#FFF8E7] shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/">
-          <motion.h1 
+        <Link to="/">          <motion.h1 
             className="text-3xl font-bold text-[#495E57] cursor-pointer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
-            Little Lemon
+            Spice Delight
           </motion.h1>
         </Link>
 
