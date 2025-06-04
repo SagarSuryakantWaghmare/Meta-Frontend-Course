@@ -8,60 +8,51 @@ const Menu = () => {
 
   const [activeCategory, setActiveCategory] = useState('starters');
   const menuItems = {
-    starters: [
-      {
+    starters: [      {
         name: "Paneer Tikka",
-        price: "$8.99",
+        price: "₹746",
         description: "Marinated cottage cheese cubes, grilled in our tandoor oven with bell peppers and onions, served with mint chutney.",
         popular: true
-      },
-      {
+      },      {
         name: "Samosa",
-        price: "$6.50",
+        price: "₹540",
         description: "Crispy pastry triangles stuffed with spiced potatoes and peas, served with tamarind and mint chutneys.",
         popular: true
-      },
-      {
+      },      {
         name: "Onion Bhaji",
-        price: "$7.25",
+        price: "₹602",
         description: "Crispy fritters of sliced onions and gram flour, seasoned with Indian spices, served with mint yogurt dip.",
         popular: false
       }
-    ],    mains: [
-      {
+    ],    mains: [      {
         name: "Butter Chicken",
-        price: "$18.99",
+        price: "₹1,576",
         description: "Tender chicken pieces cooked in a rich, creamy tomato sauce with aromatic spices and finished with butter.",
         popular: true
-      },
-      {
+      },      {
         name: "Lamb Rogan Josh",
-        price: "$20.50",
+        price: "₹1,702",
         description: "Aromatic Kashmiri lamb curry cooked with yogurt, caramelized onions, and signature blend of spices.",
         popular: false
-      },
-      {
+      },      {
         name: "Vegetable Biryani",
-        price: "$16.75",
+        price: "₹1,390",
         description: "Fragrant basmati rice slow-cooked with seasonal vegetables, saffron, and whole spices, served with raita.",
         popular: true
       }
-    ],    desserts: [
-      {
+    ],    desserts: [      {
         name: "Gulab Jamun",
-        price: "$6.50",
+        price: "₹540",
         description: "Soft milk solids dumplings, deep-fried and soaked in rose and cardamom flavored sugar syrup.",
         popular: true
-      },
-      {
+      },      {
         name: "Rasmalai",
-        price: "$7.25",
+        price: "₹602",
         description: "Soft cottage cheese patties immersed in creamy, cardamom-flavored milk, garnished with pistachios.",
         popular: false
-      },
-      {
+      },      {
         name: "Kulfi",
-        price: "$5.99",
+        price: "₹497",
         description: "Traditional Indian ice cream flavored with saffron, cardamom and topped with crushed pistachios.",
         popular: true
       }
