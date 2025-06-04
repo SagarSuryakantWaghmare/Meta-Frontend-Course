@@ -87,28 +87,26 @@ const About = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            Our team is the heart of Little Lemon. Each member brings unique talents and passion to create unforgettable dining experiences.
+          >            Our team is the heart of Spice Delight. Each member brings unique talents and passion to create unforgettable dining experiences.
           </motion.p>
 
           <div className="grid md:grid-cols-3 gap-12">
             {[
               {
-                name: "Mario",
+                name: "Rajesh Sharma",
                 role: "Co-Owner & Head Chef",
-                bio: "With over 20 years of culinary experience, Mario ensures every dish meets our high standards of authenticity and flavor.",
+                bio: "With over 20 years of culinary experience, Rajesh ensures every dish meets our high standards of authenticity and flavor from Northern India.",
                 img: "https://images.unsplash.com/photo-1583394293214-28ded15ee548"
-              },
-              {
-                name: "Adrian",
-                role: "Co-Owner & Sommelier",
-                bio: "Adrian curates our wine selection and manages operations, bringing business acumen to complement Mario's culinary expertise.",
+              },              {
+                name: "Sunil Sharma",
+                role: "Co-Owner & Restaurant Manager",
+                bio: "Sunil manages operations with exceptional hospitality skills, ensuring every guest feels welcome while bringing business acumen to complement Rajesh's culinary expertise.",
                 img: "https://images.unsplash.com/photo-1560250097-0b93528c311a"
               },
               {
-                name: "Sophia",
-                role: "Pastry Chef",
-                bio: "Our dessert maestro who brings creativity to traditional Mediterranean sweets with her modern techniques.",
+                name: "Priya Patel",
+                role: "Dessert Specialist",
+                bio: "Our dessert maestro who brings creativity to traditional Indian sweets with her modern techniques and artistic presentations.",
                 img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2"
               }
             ].map((member, i) => (
@@ -207,14 +205,13 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             Experience Our Story Firsthand
-          </motion.h2>
-          <motion.p
+          </motion.h2>          <motion.p
             className="text-xl text-white mb-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Join us for a meal and become part of the Little Lemon family
+            Join us for a meal and become part of the Spice Delight family
           </motion.p>
           <motion.button
             className="bg-[#F4CE14] text-[#495E57] px-10 py-5 rounded-lg hover:bg-[#e6c213] transition duration-300 text-xl font-bold shadow-lg hover:shadow-xl"

@@ -204,7 +204,7 @@ const Reservation = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            Join us for an unforgettable Mediterranean dining experience
+            Join us for an unforgettable Indian culinary journey
           </motion.p>
         </div>
       </section>
@@ -240,7 +240,7 @@ const Reservation = () => {
                   <p className="text-[#495E57] italic mb-2">
                     "We're excited to serve you! Feel free to call us if you have any questions before your visit."
                   </p>
-                  <p className="font-semibold">- Little Lemon Team</p>
+                  <p className="font-semibold">- Spice Delight Team</p>
                 </div>
                 <button
                   onClick={() => setSubmitSuccess(false)}
@@ -462,6 +462,7 @@ const Reservation = () => {
                           <option value="Anniversary">Anniversary</option>
                           <option value="Date">Date Night</option>
                           <option value="Business">Business Meal</option>
+                          <option value="Diwali">Diwali Celebration</option>
                           <option value="Other">Other</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
@@ -497,7 +498,7 @@ const Reservation = () => {
                             </div>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600">Climate controlled, elegant ambiance</p>
+                        <p className="text-sm text-gray-600">Elegant dining with classical Indian ambiance</p>
                       </div>
                       
                       <div
@@ -509,14 +510,14 @@ const Reservation = () => {
                         onClick={() => setFormData(prev => ({ ...prev, seating: "outdoor" }))}
                       >
                         <div className="flex justify-between items-center mb-2">
-                          <h3 className="font-semibold">Outdoor Patio</h3>
+                          <h3 className="font-semibold">Courtyard Seating</h3>
                           {formData.seating === "outdoor" && (
                             <div className="w-5 h-5 bg-[#F4CE14] rounded-full flex items-center justify-center">
                               <FaCheck className="text-[#495E57] text-xs" />
                             </div>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600">Beautiful garden view, weather permitting</p>
+                        <p className="text-sm text-gray-600">Open-air dining with traditional decorations, weather permitting</p>
                       </div>
                     </div>
                   </div>
@@ -590,12 +591,12 @@ const Reservation = () => {
                 answer: "You can cancel or modify your reservation up to 3 hours before your scheduled time without any charge. For cancellations less than 3 hours in advance, a fee may apply."
               },
               {
-                question: "Can I make special requests for my reservation?",
-                answer: "Absolutely! Please use the special requests field in the reservation form, and we'll do our best to accommodate your needs."
+                question: "Do you cater to dietary restrictions?",
+                answer: "Absolutely! We offer many vegetarian options and can accommodate gluten-free, dairy-free and other dietary needs. Please mention your requirements in the special requests field."
               },
               {
                 question: "How long can I keep my table?",
-                answer: "We typically allocate 2 hours for parties of 2-4 guests and 2.5 hours for parties of 5-10. If you need more time, please let us know in advance."
+                answer: "We typically allocate 2 hours for parties of 2-4 guests and 2.5 hours for parties of 5-10. If you need more time for a special celebration, please let us know in advance."
               },
               {
                 question: "Is there a dress code?",
@@ -623,7 +624,7 @@ const Reservation = () => {
           >
             <p className="mb-4">Need more assistance?</p>
             <div className="inline-flex items-center justify-center px-6 py-3 bg-[#F4CE14] text-[#495E57] font-semibold rounded-lg hover:bg-[#e6c213] transition duration-300">
-              <FaUtensils className="mr-2" /> Call us at (555) 123-4567
+              <FaUtensils className="mr-2" /> Call us at (555) 789-4321
             </div>
           </motion.div>
         </div>
