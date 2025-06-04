@@ -125,12 +125,11 @@ const Navbar = () => {
             <Link to="/about" className={`hover:text-[#F4CE14] transition-all duration-300 pb-1 border-b-2 ${isActive('/about') ? 'border-[#F4CE14] text-[#F4CE14]' : 'border-transparent'}`}>About</Link>
             <Link to="/menu" className={`hover:text-[#F4CE14] transition-all duration-300 pb-1 border-b-2 ${isActive('/menu') ? 'border-[#F4CE14] text-[#F4CE14]' : 'border-transparent'}`}>Menu</Link>
             <div className="relative group">
-              <Link to="/menu" className={`hover:text-[#F4CE14] transition-all duration-300 pb-1 border-b-2 ${isActive('/menu') ? 'border-[#F4CE14] text-[#F4CE14]' : 'border-transparent'} flex items-center`}>
-                Specialties
+              <button type="button" className={`hover:text-[#F4CE14] transition-all duration-300 pb-1 border-b-2 flex items-center focus:outline-none ${location.pathname.startsWith('/menu?category=') ? 'border-[#F4CE14] text-[#F4CE14]' : 'border-transparent'}`}>Specialties
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </Link>
+              </button>
               <div className="absolute left-0 mt-1 w-48 bg-white rounded-lg shadow-xl py-2 z-50 hidden group-hover:block">
                 <Link to="/menu?category=north" className="block px-4 py-2 hover:bg-gray-100">North Indian</Link>
                 <Link to="/menu?category=south" className="block px-4 py-2 hover:bg-gray-100">South Indian</Link>
