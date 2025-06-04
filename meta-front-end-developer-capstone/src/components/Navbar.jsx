@@ -27,9 +27,7 @@ const Navbar = () => {
       } catch (e) {
         console.error('Error parsing cart data', e);
       }
-    }
-
-    // Listen for storage events to update cart
+    }    // Listen for storage events to update cart
     const handleStorageChange = () => {
       const updatedCart = localStorage.getItem('spiceDelightCart');
       if (updatedCart) {
@@ -42,8 +40,14 @@ const Navbar = () => {
       }
     };
 
+    // Listen for both storage events (for cross-tab updates) and custom cartUpdated events (for same-tab updates)
     window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    window.addEventListener('cartUpdated', handleStorageChange);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('cartUpdated', handleStorageChange);
+    };
   }, [location]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -53,11 +57,10 @@ const Navbar = () => {
     setCartItems(newCount);
     
     // Save to localStorage (simple implementation)
-    const currentCart = JSON.parse(localStorage.getItem('spiceDelightCart') || '[]');
-    currentCart.push({ 
+    const currentCart = JSON.parse(localStorage.getItem('spiceDelightCart') || '[]');    currentCart.push({ 
       id: Date.now(), 
       name: 'Special Thali', 
-      price: 14.99 
+      price: 1244 
     });
     localStorage.setItem('spiceDelightCart', JSON.stringify(currentCart));
     

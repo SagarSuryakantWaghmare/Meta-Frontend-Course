@@ -35,18 +35,25 @@ const Home = () => {
     setShowNotification(true);
     setTimeout(() => setShowNotification(false), 3000);
   };
-  
-  const addToCart = (itemName) => {
+    const addToCart = (itemName) => {
     // Get existing cart or create new one
-    const cart = JSON.parse(localStorage.getItem('littleLemonCart') || '[]');
-    // Save back to localStorage
-    localStorage.setItem('littleLemonCart', JSON.stringify(cart));
+    const cart = JSON.parse(localStorage.getItem('spiceDelightCart') || '[]');
     
-    // Show notification
+    // Add new item
+    cart.push({
+      id: Date.now(),
+      name: itemName,
+      price: itemName === 'Butter Paneer' ? 1244 : 
+             itemName === 'Dal Makhani' ? 912 : 580
+    });
+    
+    // Save back to localStorage
+    localStorage.setItem('spiceDelightCart', JSON.stringify(cart));
+      // Show notification
     showToast(`${itemName} added to your cart!`);
     
-    // Force navbar to update (this would be better with context or Redux)
-    window.dispatchEvent(new Event('storage'));
+    // Force navbar to update by dispatching a custom event
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
   };
 
   return (
